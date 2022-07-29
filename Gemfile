@@ -55,6 +55,10 @@ group :test do
   gem 'minitest-reporters', '1.3.8'
   gem 'guard', '2.15.0'
   gem 'guard-minitest', '2.4.6'
+  gem 'method_source', '~> 0.9.0'
+  gem 'pry', '0.12.2'
+  gem 'pry-byebug', '3.8.0'
+  gem 'pry-rails', '0.3.9'
 end
 
 group :production do
