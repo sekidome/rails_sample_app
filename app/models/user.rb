@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-    before_save { self.email = email.downcase } #could also write self.email.downcase = self is optional on the right side
+    before_save { email.downcase! } #could also write self.email = (self.)email.downcase - () indicates self is optional on the right side
     validates :name, presence: true, length: { maximum: 50 }
     # could also be written like validates(:name, {presence: true...})
     #VALID_EMAIL_REGEX is a constant, indicated in Ruby by a
