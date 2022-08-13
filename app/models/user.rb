@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+    before_save { self.email = email.downcase } #could also write self.email.downcase = self is optional on the right side
     validates :name, presence: true, length: { maximum: 50 }
     # could also be written like validates(:name, {presence: true...})
     #VALID_EMAIL_REGEX is a constant, indicated in Ruby by a
@@ -6,5 +7,5 @@ class User < ApplicationRecord
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
     validates :email, presence: true, length: { maximum: 255 },
                         format: { with: VALID_EMAIL_REGEX },
-                        uniqueness: { case_sensitive: false }
+                        uniqueness: true
 end
