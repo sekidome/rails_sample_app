@@ -5,8 +5,12 @@ class User < ApplicationRecord
     #VALID_EMAIL_REGEX is a constant, indicated in Ruby by a
     #name starting with a capital letter
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+    VALID_PASSWORD = /\A(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!\(\)\[\]\\\$?%&]).*\z/
     validates :email, presence: true, length: { maximum: 255 },
                         format: { with: VALID_EMAIL_REGEX },
                         uniqueness: true
     has_secure_password
+    validates :password, length: {minimum: 8},
+                         format: { with: VALID_PASSWORD },
+                         presence: true
 end
